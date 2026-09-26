@@ -10,9 +10,12 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface AbsenceExcuseRepository extends JpaRepository<AbsenceExcuse, UUID>, JpaSpecificationExecutor<AbsenceExcuse> {
+public interface AbsenceExcuseRepository
+		extends
+			JpaRepository<AbsenceExcuse, UUID>,
+			JpaSpecificationExecutor<AbsenceExcuse> {
 
-    Optional<AbsenceExcuse> findByRecordId(UUID recordId);
+	Optional<AbsenceExcuse> findByRecordId(UUID recordId);
 
-    List<AbsenceExcuse> findByStudentId(UUID studentId);
+	List<AbsenceExcuse> findByStudentId(UUID studentId);
 }

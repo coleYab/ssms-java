@@ -10,32 +10,17 @@ import java.util.UUID;
 
 public class UserDtos {
 
-    public record UpdateUserRequest(
-            @Email String email,
-            String phone
-    ) {}
+	public record UpdateUserRequest(@Email String email, String phone) {
+	}
 
-    public record ChangeRoleRequest(
-            @NotNull Role role
-    ) {}
+	public record ChangeRoleRequest(@NotNull Role role) {
+	}
 
-    public record DeactivateUserRequest(
-            String reason
-    ) {}
+	public record DeactivateUserRequest(String reason) {
+	}
 
-    public record UserDetailsResponse(
-            UUID id,
-            String email,
-            Role role,
-            AccountStatus status,
-            String phone,
-            String preferredLanguage,
-            boolean mustChangePassword,
-            Instant lastLoginAt,
-            Instant lockedUntil,
-            Instant createdAt,
-            Instant updatedAt,
-            Instant deletedAt,
-            Integer version
-    ) {}
+	public record UserDetailsResponse(UUID id, String email, Role role, AccountStatus status, String phone,
+			String preferredLanguage, boolean mustChangePassword, Instant lastLoginAt, Instant lockedUntil,
+			Instant createdAt, Instant updatedAt, Instant deletedAt, Integer version) {
+	}
 }

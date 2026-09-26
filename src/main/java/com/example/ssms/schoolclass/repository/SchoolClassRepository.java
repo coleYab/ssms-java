@@ -12,11 +12,11 @@ import java.util.UUID;
 @Repository
 public interface SchoolClassRepository extends JpaRepository<SchoolClass, UUID>, JpaSpecificationExecutor<SchoolClass> {
 
-    Optional<SchoolClass> findByAcademicYearIdAndNameIgnoreCase(UUID academicYearId, String name);
+	Optional<SchoolClass> findByAcademicYearIdAndNameIgnoreCase(UUID academicYearId, String name);
 
-    List<SchoolClass> findByAcademicYearId(UUID academicYearId);
+	List<SchoolClass> findByAcademicYearId(UUID academicYearId);
 
-    List<SchoolClass> findByHomeroomTeacherId(UUID homeroomTeacherId);
+	List<SchoolClass> findByHomeroomTeacherId(UUID homeroomTeacherId);
 
-    boolean existsByHomeroomTeacherIdAndAcademicYearId(UUID homeroomTeacherId, UUID academicYearId);
+	boolean existsByHomeroomTeacherIdAndAcademicYearId(UUID homeroomTeacherId, UUID academicYearId);
 }

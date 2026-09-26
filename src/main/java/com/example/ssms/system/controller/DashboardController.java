@@ -18,37 +18,35 @@ import java.util.Map;
 @RequestMapping("/api/v1/dashboard")
 public class DashboardController {
 
-    private final SystemService systemService;
+	private final SystemService systemService;
 
-    public DashboardController(SystemService systemService) {
-        this.systemService = systemService;
-    }
+	public DashboardController(SystemService systemService) {
+		this.systemService = systemService;
+	}
 
-    @GetMapping("/stats")
-    @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
-    @Operation(summary = "Dashboard stats for admin.")
-    public ResponseEntity<ApiResponse<Map<String, Object>>> getAdminStats(HttpServletRequest httpRequest) {
-        String requestId = (String) httpRequest.getAttribute("X-Request-ID");
-        return ResponseEntity.ok(ApiResponse.ok(systemService.getAdminDashboardStats(), requestId));
-    }
+	@GetMapping("/stats")
+	@PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
+	@Operation(summary = "Dashboard stats for admin.")
+	public ResponseEntity<ApiResponse<Map<String, Object>>> getAdminStats(HttpServletRequest httpRequest) {
+		String requestId = (String) httpRequest.getAttribute("X-Request-ID");
+		return ResponseEntity.ok(ApiResponse.ok(systemService.getAdminDashboardStats(), requestId));
+	}
 
-    @GetMapping("/teacher")
-    @PreAuthorize("hasRole('TEACHER')")
-    @Operation(summary = "Teacher dashboard overview.")
-    public ResponseEntity<ApiResponse<Map<String, Object>>> getTeacherStats(
-            @AuthenticationPrincipal UserPrincipal principal,
-            HttpServletRequest httpRequest) {
-        String requestId = (String) httpRequest.getAttribute("X-Request-ID");
-        return ResponseEntity.ok(ApiResponse.ok(systemService.getTeacherDashboardStats(principal.getId()), requestId));
-    }
+	@GetMapping("/teacher")
+	@PreAuthorize("hasRole('TEACHER')")
+	@Operation(summary = "Teacher dashboard overview.")
+	public ResponseEntity<ApiResponse<Map<String, Object>>> getTeacherStats(
+			@AuthenticationPrincipal UserPrincipal principal, HttpServletRequest httpRequest) {
+		String requestId = (String) httpRequest.getAttribute("X-Request-ID");
+		return ResponseEntity.ok(ApiResponse.ok(systemService.getTeacherDashboardStats(principal.getId()), requestId));
+	}
 
-    @GetMapping("/student")
-    @PreAuthorize("hasRole('STUDENT')")
-    @Operation(summary = "Student dashboard overview.")
-    public ResponseEntity<ApiResponse<Map<String, Object>>> getStudentStats(
-            @AuthenticationPrincipal UserPrincipal principal,
-            HttpServletRequest httpRequest) {
-        String requestId = (String) httpRequest.getAttribute("X-Request-ID");
-        return ResponseEntity.ok(ApiResponse.ok(systemService.getStudentDashboardStats(principal.getId()), requestId));
-    }
+	@GetMapping("/student")
+	@PreAuthorize("hasRole('STUDENT')")
+	@Operation(summary = "Student dashboard overview.")
+	public ResponseEntity<ApiResponse<Map<String, Object>>> getStudentStats(
+			@AuthenticationPrincipal UserPrincipal principal, HttpServletRequest httpRequest) {
+		String requestId = (String) httpRequest.getAttribute("X-Request-ID");
+		return ResponseEntity.ok(ApiResponse.ok(systemService.getStudentDashboardStats(principal.getId()), requestId));
+	}
 }

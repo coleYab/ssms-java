@@ -10,15 +10,15 @@ import java.util.UUID;
 @Repository
 public interface SystemSettingRepository extends JpaRepository<SystemSetting, UUID> {
 
-    Optional<SystemSetting> findBySettingKey(String settingKey);
+	Optional<SystemSetting> findBySettingKey(String settingKey);
 
-    boolean existsBySettingKey(String settingKey);
+	boolean existsBySettingKey(String settingKey);
 
-    default Optional<SystemSetting> findByKey(String key) {
-        return findBySettingKey(key);
-    }
+	default Optional<SystemSetting> findByKey(String key) {
+		return findBySettingKey(key);
+	}
 
-    default boolean existsByKey(String key) {
-        return existsBySettingKey(key);
-    }
+	default boolean existsByKey(String key) {
+		return existsBySettingKey(key);
+	}
 }

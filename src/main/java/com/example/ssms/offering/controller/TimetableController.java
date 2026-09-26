@@ -20,28 +20,22 @@ import java.util.UUID;
 @Tag(name = "Timetable", description = "Endpoints for school-wide schedule and conflict detection")
 public class TimetableController {
 
-    @GetMapping
-    @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
-    @Operation(summary = "School-wide timetable.")
-    public ResponseEntity<ApiResponse<List<Object>>> getTimetable(
-            @RequestParam(required = false) UUID termId,
-            @RequestParam(required = false) UUID teacherId,
-            @RequestParam(required = false) UUID classId,
-            @RequestParam(required = false) Integer dayOfWeek,
-            HttpServletRequest httpRequest
-    ) {
-        String requestId = (String) httpRequest.getAttribute("X-Request-ID");
-        return ResponseEntity.ok(ApiResponse.ok(List.of(), requestId));
-    }
+	@GetMapping
+	@PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
+	@Operation(summary = "School-wide timetable.")
+	public ResponseEntity<ApiResponse<List<Object>>> getTimetable(@RequestParam(required = false) UUID termId,
+			@RequestParam(required = false) UUID teacherId, @RequestParam(required = false) UUID classId,
+			@RequestParam(required = false) Integer dayOfWeek, HttpServletRequest httpRequest) {
+		String requestId = (String) httpRequest.getAttribute("X-Request-ID");
+		return ResponseEntity.ok(ApiResponse.ok(List.of(), requestId));
+	}
 
-    @GetMapping("/conflicts")
-    @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
-    @Operation(summary = "Detect teacher and class overlaps in a term.")
-    public ResponseEntity<ApiResponse<List<Map<String, Object>>>> getConflicts(
-            @RequestParam(required = false) UUID termId,
-            HttpServletRequest httpRequest
-    ) {
-        String requestId = (String) httpRequest.getAttribute("X-Request-ID");
-        return ResponseEntity.ok(ApiResponse.ok(List.of(), requestId));
-    }
+	@GetMapping("/conflicts")
+	@PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
+	@Operation(summary = "Detect teacher and class overlaps in a term.")
+	public ResponseEntity<ApiResponse<List<Map<String, Object>>>> getConflicts(
+			@RequestParam(required = false) UUID termId, HttpServletRequest httpRequest) {
+		String requestId = (String) httpRequest.getAttribute("X-Request-ID");
+		return ResponseEntity.ok(ApiResponse.ok(List.of(), requestId));
+	}
 }

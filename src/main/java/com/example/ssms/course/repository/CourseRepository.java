@@ -11,7 +11,7 @@ import java.util.UUID;
 @Repository
 public interface CourseRepository extends JpaRepository<Course, UUID>, JpaSpecificationExecutor<Course> {
 
-    Optional<Course> findByCourseCodeIgnoreCase(String courseCode);
+	Optional<Course> findByCourseCodeIgnoreCase(String courseCode);
 
-    boolean existsByCourseCodeIgnoreCase(String courseCode);
+	boolean existsByCourseCodeIgnoreCase(String courseCode);
 }

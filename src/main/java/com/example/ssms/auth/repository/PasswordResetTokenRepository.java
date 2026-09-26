@@ -9,5 +9,5 @@ import java.util.UUID;
 
 @Repository
 public interface PasswordResetTokenRepository extends JpaRepository<PasswordResetToken, UUID> {
-    Optional<PasswordResetToken> findByTokenHashAndUsedFalse(String tokenHash);
+	Optional<PasswordResetToken> findByTokenHashAndUsedFalse(String tokenHash);
 }

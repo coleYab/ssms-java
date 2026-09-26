@@ -11,9 +11,9 @@ import java.util.UUID;
 @Repository
 public interface GuardianRepository extends JpaRepository<Guardian, UUID> {
 
-    List<Guardian> findByStudentId(UUID studentId);
+	List<Guardian> findByStudentId(UUID studentId);
 
-    Optional<Guardian> findByStudentIdAndIsPrimaryTrue(UUID studentId);
+	Optional<Guardian> findByStudentIdAndIsPrimaryTrue(UUID studentId);
 
-    long countByStudentId(UUID studentId);
+	long countByStudentId(UUID studentId);
 }

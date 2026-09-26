@@ -9,6 +9,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface AdminProfileRepository extends JpaRepository<AdminProfile, UUID>, JpaSpecificationExecutor<AdminProfile> {
-    Optional<AdminProfile> findByUserId(UUID userId);
+public interface AdminProfileRepository
+		extends
+			JpaRepository<AdminProfile, UUID>,
+			JpaSpecificationExecutor<AdminProfile> {
+	Optional<AdminProfile> findByUserId(UUID userId);
 }

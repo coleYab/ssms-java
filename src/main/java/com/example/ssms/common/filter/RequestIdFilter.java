@@ -17,25 +17,25 @@ import java.util.UUID;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class RequestIdFilter extends OncePerRequestFilter {
 
-    public static final String REQUEST_ID_HEADER = "X-Request-ID";
-    public static final String REQUEST_ID_ATTR = "X-Request-ID";
+	public static final String REQUEST_ID_HEADER = "X-Request-ID";
+	public static final String REQUEST_ID_ATTR = "X-Request-ID";
 
-    @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-            throws ServletException, IOException {
-        String requestId = request.getHeader(REQUEST_ID_HEADER);
-        if (requestId == null || requestId.isBlank() || requestId.length() > 64) {
-            requestId = UUID.randomUUID().toString();
-        }
+	@Override
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+			throws ServletException, IOException {
+		String requestId = request.getHeader(REQUEST_ID_HEADER);
+		if (requestId == null || requestId.isBlank() || requestId.length() > 64) {
+			requestId = UUID.randomUUID().toString();
+		}
 
-        request.setAttribute(REQUEST_ID_ATTR, requestId);
-        response.setHeader(REQUEST_ID_HEADER, requestId);
-        MDC.put("requestId", requestId);
+		request.setAttribute(REQUEST_ID_ATTR, requestId);
+		response.setHeader(REQUEST_ID_HEADER, requestId);
+		MDC.put("requestId", requestId);
 
-        try {
-            filterChain.doFilter(request, response);
-        } finally {
-            MDC.remove("requestId");
-        }
-    }
+		try {
+			filterChain.doFilter(request, response);
+		} finally {
+			MDC.remove("requestId");
+		}
+	}
 }

@@ -10,17 +10,20 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface CourseOfferingRepository extends JpaRepository<CourseOffering, UUID>, JpaSpecificationExecutor<CourseOffering> {
+public interface CourseOfferingRepository
+		extends
+			JpaRepository<CourseOffering, UUID>,
+			JpaSpecificationExecutor<CourseOffering> {
 
-    Optional<CourseOffering> findByCourseIdAndClassIdAndTermId(UUID courseId, UUID classId, UUID termId);
+	Optional<CourseOffering> findByCourseIdAndClassIdAndTermId(UUID courseId, UUID classId, UUID termId);
 
-    List<CourseOffering> findByClassId(UUID classId);
+	List<CourseOffering> findByClassId(UUID classId);
 
-    List<CourseOffering> findByTeacherId(UUID teacherId);
+	List<CourseOffering> findByTeacherId(UUID teacherId);
 
-    List<CourseOffering> findByCourseId(UUID courseId);
+	List<CourseOffering> findByCourseId(UUID courseId);
 
-    List<CourseOffering> findByTermId(UUID termId);
+	List<CourseOffering> findByTermId(UUID termId);
 
-    boolean existsByCourseId(UUID courseId);
+	boolean existsByCourseId(UUID courseId);
 }

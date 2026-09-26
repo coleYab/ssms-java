@@ -11,13 +11,13 @@ import org.springframework.context.annotation.Primary;
 @Configuration
 public class JacksonConfig {
 
-    @Bean
-    @Primary
-    public ObjectMapper objectMapper() {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new JavaTimeModule());
-        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        mapper.enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-        return mapper;
-    }
+	@Bean
+	@Primary
+	public ObjectMapper objectMapper() {
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.registerModule(new JavaTimeModule());
+		mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+		mapper.enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+		return mapper;
+	}
 }

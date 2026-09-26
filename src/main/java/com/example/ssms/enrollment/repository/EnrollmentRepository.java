@@ -13,15 +13,16 @@ import java.util.UUID;
 @Repository
 public interface EnrollmentRepository extends JpaRepository<Enrollment, UUID>, JpaSpecificationExecutor<Enrollment> {
 
-    List<Enrollment> findByClassIdAndStatus(UUID classId, EnrollmentStatus status);
+	List<Enrollment> findByClassIdAndStatus(UUID classId, EnrollmentStatus status);
 
-    List<Enrollment> findByStudentIdOrderByStartDateDesc(UUID studentId);
+	List<Enrollment> findByStudentIdOrderByStartDateDesc(UUID studentId);
 
-    Optional<Enrollment> findByStudentIdAndAcademicYearIdAndStatus(UUID studentId, UUID academicYearId, EnrollmentStatus status);
+	Optional<Enrollment> findByStudentIdAndAcademicYearIdAndStatus(UUID studentId, UUID academicYearId,
+			EnrollmentStatus status);
 
-    Optional<Enrollment> findByStudentIdAndClassIdAndStatus(UUID studentId, UUID classId, EnrollmentStatus status);
+	Optional<Enrollment> findByStudentIdAndClassIdAndStatus(UUID studentId, UUID classId, EnrollmentStatus status);
 
-    long countByClassIdAndStatus(UUID classId, EnrollmentStatus status);
+	long countByClassIdAndStatus(UUID classId, EnrollmentStatus status);
 
-    boolean existsByStudentIdAndAcademicYearIdAndStatus(UUID studentId, UUID academicYearId, EnrollmentStatus status);
+	boolean existsByStudentIdAndAcademicYearIdAndStatus(UUID studentId, UUID academicYearId, EnrollmentStatus status);
 }

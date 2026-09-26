@@ -1,7 +1,5 @@
 package com.example.ssms.security;
 
 public enum ProfileType {
-    ADMIN,
-    TEACHER,
-    STUDENT
+	ADMIN, TEACHER, STUDENT
 }

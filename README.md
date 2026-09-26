@@ -1,6 +1,5 @@
 # School System Management System (SSMS)
 
-[![Java CI with Maven and PostgreSQL](https://github.com/your-org/ssms/actions/workflows/test.yml/badge.svg)](https://github.com/your-org/ssms/actions/workflows/test.yml)
 ![Java 21](https://img.shields.io/badge/Java-21-orange.svg)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.1.1-brightgreen.svg)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-blue.svg)
@@ -10,25 +9,25 @@ A modern, production-grade REST API backend for managing secondary school instit
 
 ---
 
-## 📖 Table of Contents
+## Table of Contents
 
-- [Features](#-features)
-- [Architecture & Tech Stack](#-architecture--tech-stack)
-- [Getting Started](#-getting-started)
+- [Features](#features)
+- [Architecture & Tech Stack](#architecture--tech-stack)
+- [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Running PostgreSQL with Docker](#running-postgresql-with-docker)
   - [Configuration](#configuration)
   - [Building and Running the Application](#building-and-running-the-application)
-- [Default Super Administrator Credentials](#-default-super-administrator-credentials)
-- [API Documentation (Swagger / OpenAPI)](#-api-documentation-swagger--openapi)
-- [API Modules & Key Endpoints](#-api-modules--key-endpoints)
-- [Response & Error Formats](#-response--error-formats)
-- [Testing & Quality Verification](#-testing--quality-verification)
-- [CI/CD Workflow](#-cicd-workflow)
+- [Default Super Administrator Credentials](#default-super-administrator-credentials)
+- [API Documentation (Swagger / OpenAPI)](#api-documentation-swagger--openapi)
+- [API Modules & Key Endpoints](#api-modules--key-endpoints)
+- [Response & Error Formats](#response--error-formats)
+- [Testing & Quality Verification](#testing--quality-verification)
+- [CI/CD Workflow](#cicd-workflow)
 
 ---
 
-## 🚀 Features
+## Features
 
 - **Authentication & RBAC:**
   - Stateless Bearer JWT authentication (RSA RS256) with public JWKS key rotation endpoint (`/.well-known/jwks.json`).
@@ -66,7 +65,7 @@ A modern, production-grade REST API backend for managing secondary school instit
 
 ---
 
-## 🏗 Architecture & Tech Stack
+## Architecture & Tech Stack
 
 - **Language:** Java 21+
 - **Framework:** Spring Boot 4.1.1 (Spring 7.x)
@@ -79,7 +78,7 @@ A modern, production-grade REST API backend for managing secondary school instit
 
 ---
 
-## 🛠 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -125,7 +124,7 @@ java -jar target/ssms-0.0.1-SNAPSHOT.jar
 
 ---
 
-## 🔑 Default Super Administrator Credentials
+## Default Super Administrator Credentials
 
 When the database is initialized for the first time, a default `SUPER_ADMIN` account is automatically seeded:
 
@@ -138,7 +137,7 @@ When the database is initialized for the first time, a default `SUPER_ADMIN` acc
 
 ---
 
-## 📚 API Documentation (Swagger / OpenAPI)
+## API Documentation (Swagger / OpenAPI)
 
 Once the application is running:
 
@@ -152,7 +151,7 @@ Once the application is running:
 
 ---
 
-## 📦 API Modules & Key Endpoints
+## API Modules & Key Endpoints
 
 All API endpoints are prefixed with `/api/v1`:
 
@@ -173,7 +172,7 @@ All API endpoints are prefixed with `/api/v1`:
 
 ---
 
-## 📐 Response & Error Formats
+## Response & Error Formats
 
 ### Standard Success Envelope
 All JSON 2xx responses are wrapped in a standard envelope:
@@ -232,7 +231,7 @@ All error responses follow the error specification:
 
 ---
 
-## 🧪 Testing & Quality Verification
+## Testing & Quality Verification
 
 Run the entire automated test suite:
 
@@ -246,7 +245,7 @@ This executes:
 
 ---
 
-## 🤖 CI/CD Workflow
+## CI/CD Workflow
 
 The repository includes a GitHub Actions workflow located at `.github/workflows/test.yml`:
 - Runs automatically on pushes and pull requests to `main`, `master`, and `develop`.

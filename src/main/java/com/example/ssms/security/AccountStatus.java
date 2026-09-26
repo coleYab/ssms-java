@@ -1,8 +1,5 @@
 package com.example.ssms.security;
 
 public enum AccountStatus {
-    ACTIVE,
-    INACTIVE,
-    LOCKED,
-    PENDING
+	ACTIVE, INACTIVE, LOCKED, PENDING
 }

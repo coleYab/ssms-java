@@ -10,7 +10,7 @@ import java.util.UUID;
 @Repository
 public interface ScheduleSlotRepository extends JpaRepository<ScheduleSlot, UUID> {
 
-    List<ScheduleSlot> findByOfferingId(UUID offeringId);
+	List<ScheduleSlot> findByOfferingId(UUID offeringId);
 
-    void deleteByOfferingId(UUID offeringId);
+	void deleteByOfferingId(UUID offeringId);
 }

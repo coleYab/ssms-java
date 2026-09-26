@@ -14,27 +14,26 @@ import java.util.Map;
 @RequestMapping("/api/v1/system/settings")
 public class SystemSettingController {
 
-    private final SystemService systemService;
+	private final SystemService systemService;
 
-    public SystemSettingController(SystemService systemService) {
-        this.systemService = systemService;
-    }
+	public SystemSettingController(SystemService systemService) {
+		this.systemService = systemService;
+	}
 
-    @GetMapping
-    @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
-    @Operation(summary = "Read system settings.")
-    public ResponseEntity<ApiResponse<Map<String, Object>>> getSettings(HttpServletRequest httpRequest) {
-        String requestId = (String) httpRequest.getAttribute("X-Request-ID");
-        return ResponseEntity.ok(ApiResponse.ok(systemService.getAllSettings(), requestId));
-    }
+	@GetMapping
+	@PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
+	@Operation(summary = "Read system settings.")
+	public ResponseEntity<ApiResponse<Map<String, Object>>> getSettings(HttpServletRequest httpRequest) {
+		String requestId = (String) httpRequest.getAttribute("X-Request-ID");
+		return ResponseEntity.ok(ApiResponse.ok(systemService.getAllSettings(), requestId));
+	}
 
-    @PatchMapping
-    @PreAuthorize("hasRole('SUPER_ADMIN')")
-    @Operation(summary = "Update system settings.")
-    public ResponseEntity<ApiResponse<Map<String, Object>>> updateSettings(
-            @RequestBody Map<String, Object> updates,
-            HttpServletRequest httpRequest) {
-        String requestId = (String) httpRequest.getAttribute("X-Request-ID");
-        return ResponseEntity.ok(ApiResponse.ok(systemService.updateSettings(updates), requestId));
-    }
+	@PatchMapping
+	@PreAuthorize("hasRole('SUPER_ADMIN')")
+	@Operation(summary = "Update system settings.")
+	public ResponseEntity<ApiResponse<Map<String, Object>>> updateSettings(@RequestBody Map<String, Object> updates,
+			HttpServletRequest httpRequest) {
+		String requestId = (String) httpRequest.getAttribute("X-Request-ID");
+		return ResponseEntity.ok(ApiResponse.ok(systemService.updateSettings(updates), requestId));
+	}
 }

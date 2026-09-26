@@ -13,13 +13,13 @@ import java.util.UUID;
 @Repository
 public interface UserSessionRepository extends JpaRepository<UserSession, UUID> {
 
-    Optional<UserSession> findByRefreshTokenHash(String refreshTokenHash);
+	Optional<UserSession> findByRefreshTokenHash(String refreshTokenHash);
 
-    List<UserSession> findByUserIdAndRevokedFalseOrderByLastUsedAtDesc(UUID userId);
+	List<UserSession> findByUserIdAndRevokedFalseOrderByLastUsedAtDesc(UUID userId);
 
-    @Modifying
-    @Query("UPDATE UserSession s SET s.revoked = true WHERE s.userId = :userId")
-    void revokeAllByUserId(UUID userId);
+	@Modifying
+	@Query("UPDATE UserSession s SET s.revoked = true WHERE s.userId = :userId")
+	void revokeAllByUserId(UUID userId);
 
-    long countByUserIdAndRevokedFalse(UUID userId);
+	long countByUserIdAndRevokedFalse(UUID userId);
 }

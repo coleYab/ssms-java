@@ -15,25 +15,19 @@ import java.util.Map;
 @RequestMapping("/api/v1/health")
 public class HealthController {
 
-    @GetMapping
-    @Operation(summary = "Health check.")
-    public ResponseEntity<ApiResponse<Map<String, Object>>> checkHealth(HttpServletRequest httpRequest) {
-        String requestId = (String) httpRequest.getAttribute("X-Request-ID");
-        return ResponseEntity.ok(ApiResponse.ok(Map.of(
-                "status", "UP",
-                "timestamp", Instant.now().toString(),
-                "service", "School System Management System (SSMS)"
-        ), requestId));
-    }
+	@GetMapping
+	@Operation(summary = "Health check.")
+	public ResponseEntity<ApiResponse<Map<String, Object>>> checkHealth(HttpServletRequest httpRequest) {
+		String requestId = (String) httpRequest.getAttribute("X-Request-ID");
+		return ResponseEntity.ok(ApiResponse.ok(Map.of("status", "UP", "timestamp", Instant.now().toString(), "service",
+				"School System Management System (SSMS)"), requestId));
+	}
 
-    @GetMapping("/ready")
-    @Operation(summary = "Readiness check.")
-    public ResponseEntity<ApiResponse<Map<String, Object>>> checkReadiness(HttpServletRequest httpRequest) {
-        String requestId = (String) httpRequest.getAttribute("X-Request-ID");
-        return ResponseEntity.ok(ApiResponse.ok(Map.of(
-                "status", "READY",
-                "timestamp", Instant.now().toString(),
-                "database", "UP"
-        ), requestId));
-    }
+	@GetMapping("/ready")
+	@Operation(summary = "Readiness check.")
+	public ResponseEntity<ApiResponse<Map<String, Object>>> checkReadiness(HttpServletRequest httpRequest) {
+		String requestId = (String) httpRequest.getAttribute("X-Request-ID");
+		return ResponseEntity.ok(ApiResponse
+				.ok(Map.of("status", "READY", "timestamp", Instant.now().toString(), "database", "UP"), requestId));
+	}
 }

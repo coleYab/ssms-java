@@ -9,5 +9,5 @@ import java.util.UUID;
 
 @Repository
 public interface AttendanceRecordHistoryRepository extends JpaRepository<AttendanceRecordHistory, UUID> {
-    List<AttendanceRecordHistory> findByRecordIdOrderByCreatedAtDesc(UUID recordId);
+	List<AttendanceRecordHistory> findByRecordIdOrderByCreatedAtDesc(UUID recordId);
 }

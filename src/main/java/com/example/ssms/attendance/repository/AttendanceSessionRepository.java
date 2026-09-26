@@ -12,11 +12,15 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface AttendanceSessionRepository extends JpaRepository<AttendanceSession, UUID>, JpaSpecificationExecutor<AttendanceSession> {
+public interface AttendanceSessionRepository
+		extends
+			JpaRepository<AttendanceSession, UUID>,
+			JpaSpecificationExecutor<AttendanceSession> {
 
-    Optional<AttendanceSession> findByOfferingIdAndDateAndPeriodNumber(UUID offeringId, LocalDate date, int periodNumber);
+	Optional<AttendanceSession> findByOfferingIdAndDateAndPeriodNumber(UUID offeringId, LocalDate date,
+			int periodNumber);
 
-    List<AttendanceSession> findByOfferingId(UUID offeringId);
+	List<AttendanceSession> findByOfferingId(UUID offeringId);
 
-    List<AttendanceSession> findByDateAndStatus(LocalDate date, AttendanceSessionStatus status);
+	List<AttendanceSession> findByDateAndStatus(LocalDate date, AttendanceSessionStatus status);
 }

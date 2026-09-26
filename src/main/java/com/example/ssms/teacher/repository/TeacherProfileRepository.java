@@ -9,11 +9,14 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface TeacherProfileRepository extends JpaRepository<TeacherProfile, UUID>, JpaSpecificationExecutor<TeacherProfile> {
+public interface TeacherProfileRepository
+		extends
+			JpaRepository<TeacherProfile, UUID>,
+			JpaSpecificationExecutor<TeacherProfile> {
 
-    Optional<TeacherProfile> findByUserId(UUID userId);
+	Optional<TeacherProfile> findByUserId(UUID userId);
 
-    Optional<TeacherProfile> findByEmployeeNumber(String employeeNumber);
+	Optional<TeacherProfile> findByEmployeeNumber(String employeeNumber);
 
-    boolean existsByEmployeeNumber(String employeeNumber);
+	boolean existsByEmployeeNumber(String employeeNumber);
 }

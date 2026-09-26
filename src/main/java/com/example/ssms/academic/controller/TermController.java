@@ -19,41 +19,35 @@ import java.util.UUID;
 @Tag(name = "Terms", description = "Endpoints for academic terms")
 public class TermController {
 
-    private final AcademicService academicService;
+	private final AcademicService academicService;
 
-    public TermController(AcademicService academicService) {
-        this.academicService = academicService;
-    }
+	public TermController(AcademicService academicService) {
+		this.academicService = academicService;
+	}
 
-    @GetMapping("/{id}")
-    @Operation(summary = "Get term.")
-    public ResponseEntity<ApiResponse<TermResponse>> getTerm(
-            @PathVariable UUID id,
-            HttpServletRequest httpRequest
-    ) {
-        String requestId = (String) httpRequest.getAttribute("X-Request-ID");
-        TermResponse response = academicService.getTerm(id);
-        return ResponseEntity.ok(ApiResponse.ok(response, requestId));
-    }
+	@GetMapping("/{id}")
+	@Operation(summary = "Get term.")
+	public ResponseEntity<ApiResponse<TermResponse>> getTerm(@PathVariable UUID id, HttpServletRequest httpRequest) {
+		String requestId = (String) httpRequest.getAttribute("X-Request-ID");
+		TermResponse response = academicService.getTerm(id);
+		return ResponseEntity.ok(ApiResponse.ok(response, requestId));
+	}
 
-    @PatchMapping("/{id}")
-    @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
-    @Operation(summary = "Update term.")
-    public ResponseEntity<ApiResponse<TermResponse>> updateTerm(
-            @PathVariable UUID id,
-            @Valid @RequestBody UpdateTermRequest request,
-            HttpServletRequest httpRequest
-    ) {
-        String requestId = (String) httpRequest.getAttribute("X-Request-ID");
-        TermResponse response = academicService.updateTerm(id, request);
-        return ResponseEntity.ok(ApiResponse.ok(response, requestId));
-    }
+	@PatchMapping("/{id}")
+	@PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
+	@Operation(summary = "Update term.")
+	public ResponseEntity<ApiResponse<TermResponse>> updateTerm(@PathVariable UUID id,
+			@Valid @RequestBody UpdateTermRequest request, HttpServletRequest httpRequest) {
+		String requestId = (String) httpRequest.getAttribute("X-Request-ID");
+		TermResponse response = academicService.updateTerm(id, request);
+		return ResponseEntity.ok(ApiResponse.ok(response, requestId));
+	}
 
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
-    @Operation(summary = "Delete term if no offerings.")
-    public void deleteTerm(@PathVariable UUID id) {
-        academicService.deleteTerm(id);
-    }
+	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
+	@Operation(summary = "Delete term if no offerings.")
+	public void deleteTerm(@PathVariable UUID id) {
+		academicService.deleteTerm(id);
+	}
 }

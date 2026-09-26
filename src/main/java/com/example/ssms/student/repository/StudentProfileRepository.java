@@ -10,13 +10,16 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface StudentProfileRepository extends JpaRepository<StudentProfile, UUID>, JpaSpecificationExecutor<StudentProfile> {
+public interface StudentProfileRepository
+		extends
+			JpaRepository<StudentProfile, UUID>,
+			JpaSpecificationExecutor<StudentProfile> {
 
-    Optional<StudentProfile> findByUserId(UUID userId);
+	Optional<StudentProfile> findByUserId(UUID userId);
 
-    Optional<StudentProfile> findByStudentNumber(String studentNumber);
+	Optional<StudentProfile> findByStudentNumber(String studentNumber);
 
-    boolean existsByStudentNumber(String studentNumber);
+	boolean existsByStudentNumber(String studentNumber);
 
-    List<StudentProfile> findByCurrentClassId(UUID currentClassId);
+	List<StudentProfile> findByCurrentClassId(UUID currentClassId);
 }
