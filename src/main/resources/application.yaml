@@ -1,0 +1,68 @@
+spring:
+  application:
+    name: ssms
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/ssms_db}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+    default-property-inclusion: non_null
+
+springdoc:
+  api-docs:
+    path: /api/v1/openapi.json
+  swagger-ui:
+    path: /swagger-ui.html
+    doc-expansion: none
+    operations-sorter: alpha
+    tags-sorter: alpha
+
+ssms:
+  security:
+    jwt:
+      issuer: "ssms-api"
+      access-token-expiration-seconds: 900
+      refresh-token-expiration-seconds: 604800
+      remember-me-expiration-seconds: 2592000
+      step-up-window-seconds: 600
+  school:
+    name: "Standard School Management System"
+    timezone: "Africa/Addis_Ababa"
+    working-days: [1, 2, 3, 4, 5]
+  auth:
+    cookie-mode: false
+    password-min-length: 12
+    max-failed-logins: 5
+    lockout-minutes: 15
+  class:
+    max-capacity: 50
+  course:
+    allow-cross-grade-electives: false
+  teacher:
+    default-max-weekly-periods: 30
+    enforce-qualifications: true
+  attendance:
+    teacher-edit-window-hours: 24
+    late-counts-as-present: true
+    excused-counts-as-present: true
+    daily-present-percent: 50
+    excuse-deadline-days: 7
+    low-threshold-percent: 85
+    teacher-can-review-excuses: false
+  student:
+    suspend-blocks-login: false
+
